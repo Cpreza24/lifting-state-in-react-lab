@@ -1,9 +1,16 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import BurgerStack from './components/BurgerStack/BurgerStack';
+import IngredientList from './components/IngredientList/IngredientList';
 import './App.css';
 
 const App = () => {
+  const [stack, setStack] = useState([]);
+
+  const addIngredient = (ingredient) => {
+    setStack([...stack, ingredient]);
+  };
+  console.log(stack);
+
   const availableIngredients = [
     { name: 'Kaiser Bun', color: 'saddlebrown' },
     { name: 'Sesame Bun', color: 'sandybrown' },
@@ -24,7 +31,13 @@ const App = () => {
   return (
     <main>
       <h1>Burger Stacker</h1>
-      <section>{/* List & Stack components */}</section>
+      <section>
+        <IngredientList
+          addIngredient={addIngredient}
+          availableIngredients={availableIngredients}
+        />
+        <BurgerStack />
+      </section>
     </main>
   );
 };
