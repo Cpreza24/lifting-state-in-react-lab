@@ -9,7 +9,10 @@ const App = () => {
   const addIngredient = (ingredient) => {
     setStack([...stack, ingredient]);
   };
-  console.log(stack);
+
+  const removeIngredient = (ingredient) => {
+    setStack((stack) => stack.filter((item) => item !== ingredient));
+  };
 
   const availableIngredients = [
     { name: 'Kaiser Bun', color: 'saddlebrown' },
@@ -36,7 +39,7 @@ const App = () => {
           addIngredient={addIngredient}
           availableIngredients={availableIngredients}
         />
-        <BurgerStack />
+        <BurgerStack stack={stack} removeIngredient={removeIngredient} />
       </section>
     </main>
   );
